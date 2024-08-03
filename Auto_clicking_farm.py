@@ -1,4 +1,6 @@
 #Auto clicking script Minecraft
+
+
 from pynput import keyboard
 from pyautogui import leftClick
 from time import sleep
@@ -6,6 +8,8 @@ x = 1280
 y = 720
 time_not_pressed = 0
 on = True
+
+
 def on_press(key):
 
 
@@ -33,25 +37,29 @@ def on_release(key):
     time_not_pressed = 0
 
 # ...or, in a non-blocking fashion: 
-listener = keyboard.Listener(
-    on_press=on_press,
-    on_release=on_release)
+def script():
+    listener = keyboard.Listener(
+        on_press=on_press,
+        on_release=on_release)
 
 
-listener.start()
-while  True:
-    if on == False:
-        break; 
+    listener.start()
+    while  True:
+        if on == False:
+            break; 
 
-    if time_not_pressed < 21 :
-        sleep(1)
-        time_not_pressed += 1 
-        print(time_not_pressed)
-    
+        if time_not_pressed < 21 :
+            sleep(1)
+            time_not_pressed += 1 
+            print(time_not_pressed)
+        
 
-    if time_not_pressed > 20:
-        leftClick(x,y,3)
-        time_not_pressed+=3
-        print(time_not_pressed)
-    
-print("Program stopped")
+        if time_not_pressed > 20:
+            leftClick(x,y,3)
+            time_not_pressed+=3
+            print(time_not_pressed)
+        
+    print("Program stopped")
+
+if __name__ == "__maine__":
+    script()
